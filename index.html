@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Weather</title>
+    <!-- Font Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Glow Effects -->
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <main class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="brand">Zero<span class="dot">.</span></div>
+            <div class="unit-control">
+                <span id="unit-label">°C</span>
+                <label class="switch">
+                    <input type="checkbox" id="unit-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="city-input" placeholder="Cari lokasi...">
+            <button id="search-btn"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- History Chips -->
+        <div id="history-container" class="history-chips"></div>
+
+        <!-- Status Messages -->
+        <div id="loading" class="status-msg hidden">Sedang memindai satelit...</div>
+        <div id="error-message" class="status-msg error hidden"></div>
+
+        <!-- Main Weather Display -->
+        <div id="weather-result" class="weather-display hidden">
+            
+            <div class="hero-section">
+                <div class="temp-box">
+                    <h1 id="temp">--°</h1>
+                </div>
+                <div class="info-box">
+                    <img id="weather-icon" src="" alt="Icon">
+                    <div class="text-info">
+                        <h2 id="city-name">--</h2>
+                        <p id="weather-desc">--</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-row">
+                <div class="card stat-card">
+                    <div class="icon-box"><i class="fa-solid fa-droplet"></i></div>
+                    <div>
+                        <small>Kelembaban</small>
+                        <strong id="humidity">--</strong>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="icon-box"><i class="fa-solid fa-wind"></i></div>
+                    <div>
+                        <small>Angin</small>
+                        <strong id="wind">--</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast -->
+            <div class="forecast-area">
+                <h3>Prakiraan 5 Hari</h3>
+                <div id="forecast-list" class="forecast-scroll">
+                    <!-- JS Injects Here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+:root {
+    --bg-dark: #0f172a;       /* Slate 900 */
+    --card-dark: #1e293b;     /* Slate 800 */
+    --text-main: #f8fafc;     /* Slate 50 */
+    --text-muted: #94a3b8;    /* Slate 400 */
+    --accent: #8b5cf6;        /* Violet 500 */
+    --accent-glow: rgba(139, 92, 246, 0.5);
+    --secondary: #3b82f6;     /* Blue 500 */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- BACKGROUND GLOW (Efek Neon Blur) --- */
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.4;
+}
+.glow-1 { background: var(--accent); top: -50px; left: -50px; }
+.glow-2 { background: var(--secondary); bottom: -50px; right: -50px; }
+
+/* --- APP CONTAINER --- */
+.app-container {
+    width: 90%;
+    max-width: 420px;
+    padding: 10px;
+    z-index: 1;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 0 5px;
+}
+.brand { font-size: 1.5rem; font-weight: 700; letter-spacing: -1px; }
+.brand .dot { color: var(--accent); }
+
+/* Toggle Switch Dark Mode */
+.unit-control { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+.switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--card-dark); transition: .4s; border-radius: 34px; border: 1px solid #334155; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--accent); border-color: var(--accent); }
+input:checked + .slider:before { transform: translateX(18px); }
+
+/* --- SEARCH BAR --- */
+.search-bar {
+    background: var(--card-dark);
+    border: 1px solid #334155;
+    padding: 15px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.search-bar:focus-within { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+.search-bar i { color: var(--text-muted); }
+.search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+.search-bar button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.search-bar button:hover { background: #7c3aed; transform: scale(1.1); }
+
+/* --- HISTORY CHIPS --- */
+.history-chips { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; scrollbar-width: none; }
+.chip {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid #334155;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+.chip:hover { background: var(--card-dark); color: var(--accent); border-color: var(--accent); }
+
+/* --- WEATHER DISPLAY --- */
+.weather-display { animation: fadeUp 0.5s ease; }
+
+.hero-section { text-align: center; margin-bottom: 30px; }
+.temp-box h1 { font-size: 6rem; font-weight: 700; line-height: 1; background: linear-gradient(to bottom, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.info-box { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: -10px; }
+.info-box img { width: 70px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+.text-info h2 { font-size: 1.5rem; font-weight: 500; }
+.text-info p { color: var(--accent); font-size: 0.9rem; text-transform: capitalize; letter-spacing: 1px; }
+
+/* --- STATS CARDS --- */
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+.card {
+    background: var(--card-dark);
+    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.icon-box {
+    width: 45px; height: 45px;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+.card div { display: flex; flex-direction: column; }
+.card small { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; }
+.card strong { font-size: 1.1rem; color: var(--text-main); }
+
+/* --- FORECAST --- */
+.forecast-area h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 500; }
+.forecast-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+.fc-item {
+    background: var(--card-dark);
+    border: 1px solid #334155;
+    min-width: 75px;
+    padding: 15px 10px;
+    border-radius: 18px;
+    text-align: center;
+    transition: 0.2s;
+}
+.fc-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+.fc-day { font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 5px; }
+.fc-item img { width: 35px; margin: 5px 0; }
+.fc-temp { font-weight: 600; font-size: 0.95rem; }
+
+/* --- UTILS --- */
+.hidden { display: none !important; }
+.status-msg { text-align: center; color: var(--text-muted); margin-top: 20px; font-style: italic; }
+.error { color: #ef4444; font-style: normal; font-weight: 500; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
